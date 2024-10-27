@@ -1,0 +1,5 @@
+In this exercise, we haven’t used the Scaffold widget: Why? What is the purpose of this widget?
+ => In this case, we don't use Scaffholder widget because we just display only signle centered text,
+ which make a container Sufficient. Scaffholder is more usefull in complex app, providing feature like 
+ an app bar , side drawer , bottom , navigation, floating action and snack bars.While a Container is good
+ for simple layouts, a Scaffold is better for apps that need organized navigation and more features.
