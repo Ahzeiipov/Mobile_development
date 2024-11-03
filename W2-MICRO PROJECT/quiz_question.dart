@@ -22,15 +22,20 @@ class participant {
   participant({required this.firstName, required this.LastName});
 }
 
+// check the correct answer
+// selectOption for participant that select
+// indexCorrect is for correct answer
 // multiplechoices question allows multiple correct answers (true) or just one (false)
 bool SelectCorrectAnswer(
     List<int> selectOption, List<int> indexCorrect, bool isMultipleChoices) {
   if (isMultipleChoices) {
     //   check the select options
-
+// ah defference ng check merl tha ter in correct ans ng ah na del ot ban select
     return indexCorrect.toSet().difference(selectOption.toSet()).isEmpty &&
+        //   check merl tha ah yg select ng ah 1 na del ot trv  , if vea empty that mean vea correct all
         selectOption.toSet().difference(indexCorrect.toSet()).isEmpty;
   } else {
+    //  select options trv tea 1 and pteang merl tha rok correct answer
     return selectOption.length == 1 && selectOption[0] == indexCorrect[0];
   }
 }
@@ -51,7 +56,7 @@ void main() {
   List<participant> users = [];
   while (true) {
     print("plese input your first name:");
-
+    //  yg dak  '' for avoide null value to be not cause by error the code
     String firstName = stdin.readLineSync() ?? '';
     print("please input last Name: ");
     String lastname = stdin.readLineSync() ?? ' ';
