@@ -1,53 +1,105 @@
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 
+enum IconPosition { left, right }
+
 enum ButtonType {
-  submit(
-    icon: Icon(Icons.check),
+  primary(
     title: 'Submit',
+    icon: Icons.check,
+    backgroundColor: Colors.blue,
+    foregroundColor: Colors.white,
   ),
-  time(
+  secondary(
     title: 'Time',
-    icon: Icon(Icons.access_time),
+    icon: Icons.access_time,
+    backgroundColor: Colors.green,
+    foregroundColor: Colors.white,
   ),
-  account(
+  disabled(
     title: 'Account',
-    icon: Icon(Icons.account_tree),
+    icon: Icons.account_tree,
+    backgroundColor: Colors.grey,
+    foregroundColor: Colors.black54, // Color for text when disabled
   );
 
   final String title;
-  final Icon icon;
-  const ButtonType({required this.title, required this.icon});
+  final IconData icon; // Change to IconData
+  final Color backgroundColor;
+  final Color foregroundColor;
+
+  const ButtonType({
+    required this.title,
+    required this.icon,
+    required this.backgroundColor,
+    required this.foregroundColor,
+  });
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: Scaffold(
       body: Center(
-        // Center the Column in the body
         child: Column(
-          mainAxisSize: MainAxisSize.min, // Adjusts to the size of its children
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                // Define the action here
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min, // Minimize the size of the Row
-                children: [
-                  Icon(Icons.check),
-                  SizedBox(width: 8), // Add space between the icon and text
-                  Text('Submit'),
-                ],
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                
-              ),
+            CustomButton(
+              buttonType: ButtonType.primary,
+              iconPosition: IconPosition.left,
+            ),
+            SizedBox(height: 16), // Space between buttons
+            CustomButton(
+              buttonType: ButtonType.secondary,
+              iconPosition: IconPosition.right,
+            ),
+            SizedBox(height: 16), // Space between buttons
+            CustomButton(
+              buttonType: ButtonType.disabled,
+              iconPosition: IconPosition.left,
             ),
           ],
         ),
       ),
     ),
   ));
+}
+
+class CustomButton extends StatelessWidget {
+  final ButtonType buttonType;
+  final IconPosition iconPosition;
+
+  const CustomButton({
+    Key? key,
+    required this.buttonType,
+    this.iconPosition = IconPosition.left, // Default to left
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: buttonType == ButtonType.disabled
+          ? null
+          : () {
+              // Handle button press
+            },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: buttonType.backgroundColor,
+        foregroundColor: buttonType.foregroundColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (iconPosition == IconPosition.left) ...[
+            Icon(buttonType.icon),
+            SizedBox(width: 8),
+          ],
+          Text(buttonType.title),
+          if (iconPosition == IconPosition.right) ...[
+            SizedBox(width: 8),
+            Icon(buttonType.icon),
+          ],
+        ],
+      ),
+    );
+  }
 }
