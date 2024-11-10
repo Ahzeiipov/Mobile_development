@@ -7,7 +7,6 @@ void main() {
     home: Scaffold(
       backgroundColor: Colors.grey,
       body: Center(
-        //  i want to add the containe here
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -91,7 +90,7 @@ class WeatherForecast extends StatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.fromLTRB(50, 30, 50, 30),
+      padding: const  EdgeInsets.fromLTRB(50, 30, 50, 30),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
         color: Colors.white,

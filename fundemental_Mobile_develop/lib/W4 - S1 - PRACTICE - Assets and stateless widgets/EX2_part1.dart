@@ -20,7 +20,7 @@ void main() {
                     padding: EdgeInsets.only(left: 10),
                     child: Column(
                       children: [
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Image.asset(
                           'assets/image/dart.png',
                           width: 100,
