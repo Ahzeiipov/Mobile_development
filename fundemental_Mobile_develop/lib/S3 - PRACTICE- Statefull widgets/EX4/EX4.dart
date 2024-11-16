@@ -1,22 +1,36 @@
 // import 'package:flutter/material.dart';
 
-// class ScoreWidget extends StatefulWidget {
-//   @override
-//   _ScoreWidgetState createState() => _ScoreWidgetState();
+// void main() {
+//   runApp(MaterialApp(
+//     home: Scaffold(
+//       // backgroundColor: const Color.fromARGB(255, 131, 207, 134),
+//       body: Container(
+//         child: Scorebar(),
+//       ),
+//     ),
+//   ));
 // }
 
-// class _ScoreWidgetState extends State<ScoreWidget> {
-//   double _score = 0.0;
+// class Scorebar extends StatefulWidget {
+//   const Scorebar({
+//     super.key,
+//   });
 
-//   void _incrementScore() {
+//   @override
+//   State<Scorebar> createState() => _ScorebarState();
+// }
+
+// class _ScorebarState extends State<Scorebar> {
+//   double score = 0.0;
+//   void incremen() {
 //     setState(() {
-//       _score = (_score + 10) % 101;
+//       score = (score + 10) % 101;
 //     });
 //   }
 
-//   void _decrementScore() {
+//   void decrement() {
 //     setState(() {
-//       _score = (_score - 10) < 0 ? 0 : _score - 10;
+//       score = (score - 10) < 0 ? 0 : score - 10;
 //     });
 //   }
 
@@ -25,145 +39,92 @@
 //     return Column(
 //       mainAxisAlignment: MainAxisAlignment.center,
 //       children: [
-//         Text(
-//           'My score in Flutter',
-//           style: TextStyle(
-//             fontSize: 24.0,
-//             fontWeight: FontWeight.bold,
+//         Container(
+//           alignment: Alignment.center,
+//           child: const Text(
+//             'My score Dart',
+//             style: TextStyle(
+//               color: Colors.black,
+//               fontWeight: FontWeight.bold,
+//               fontSize: 30,
+//             ),
 //           ),
 //         ),
-//         SizedBox(height: 16.0),
-//         Stack(
-//           alignment: Alignment.centerLeft,
-//           children: [
-//             Container(
-//               width: 300,
-//               height: 30,
-//               decoration: BoxDecoration(
-//                 border: Border.all(color: Colors.grey),
-//                 borderRadius: BorderRadius.circular(15),
-//               ),
-//             ),
-//             Expanded(
-//               child: Container(
-//                 height: 30,
-//                 width: _score / 100 * 300,
-//                 decoration: BoxDecoration(
-//                   color: Colors.green,
-//                   borderRadius: BorderRadius.circular(15),
-//                 ),
-//               ),
-//             ),
-//           ],
+//         SizedBox(
+//           height: 10,
 //         ),
-//         SizedBox(height: 16.0),
 //         Row(
 //           mainAxisAlignment: MainAxisAlignment.center,
 //           children: [
 //             IconButton(
-//               onPressed: _decrementScore,
-//               icon: Icon(Icons.remove),
+//                 onPressed: () {
+//                   decrement();
+//                 },
+//                 icon: Icon(Icons.remove)),
+//             SizedBox(
+//               width: 100,
 //             ),
-//             SizedBox(width: 16.0),
-//             Text(
-//               _score.toStringAsFixed(0),
-//               style: TextStyle(
-//                 fontSize: 24.0,
-//                 fontWeight: FontWeight.bold,
-//               ),
-//             ),
-//             SizedBox(width: 16.0),
 //             IconButton(
-//               onPressed: _incrementScore,
-//               icon: Icon(Icons.add),
-//             ),
+//                 onPressed: () {
+//                   incremen();
+//                 },
+//                 icon: Icon(Icons.add))
 //           ],
 //         ),
+//         Stack(
+//           // alignment: Alignment.center,
+//           children: [
+//             Container(
+//               width: 250,
+//               height: 30,
+//               decoration: BoxDecoration(
+//                   border: Border.all(color: Colors.black),
+//                   borderRadius: BorderRadius.all(Radius.circular(10))),
+//             ),
+//             Expanded(
+//                 child: Container(
+//               width: score / 100 * 300,
+//               height: 30,
+//               decoration: BoxDecoration(
+//                   color: Colors.green,
+//                   borderRadius: BorderRadius.all(Radius.circular(10))),
+//             ))
+//           ],
+//         )
 //       ],
 //     );
 //   }
 // }
 
-// void main() {
-//   runApp(MaterialApp(
-//     home: Scaffold(
-//       appBar: AppBar(
-//         title: Text('My Flutter Score'),
-//       ),
-//       body: Center(
-//         child: ScoreWidget(),
-//       ),
-//     ),
-//   ));
-// }
-
 import 'package:flutter/material.dart';
 
-void main() {
+void maiin() {
   runApp(MaterialApp(
     home: Scaffold(
-      body: Container(
-        child: Scorebar(),
-      ),
+      backgroundColor: Colors.green,
+      body: Scorebar(),
     ),
   ));
 }
 
-class Scorebar extends StatefulWidget {
+class Scorebar extends StatelessWidget {
   const Scorebar({
     super.key,
   });
 
   @override
-  State<Scorebar> createState() => _ScorebarState();
-}
-
-class _ScorebarState extends State<Scorebar> {
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          alignment: Alignment.center,
-          child: const Text(
-            'My score Dart',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            child: Text(
+              'My score dart',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            IconButton(onPressed: (){},
-            icon: Icons.)
-          ],
-        ),
-        Stack(
-          children: [
-            Container(
-              width: 250,
-              height: 30,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-            ),
-            Expanded(
-              child: Container(
-                height: 30,
-                // width: Function!!,
-              )
-             
-            )
-
-          ],
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }
