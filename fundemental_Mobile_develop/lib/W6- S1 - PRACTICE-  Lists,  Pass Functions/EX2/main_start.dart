@@ -1,4 +1,3 @@
-import 'package:class_practice/W6-%20S2%20-%20PRACTICE-%20%20Lists,%20%20Pass%20Functions/EX2/profile_tile_model.dart';
 import 'package:flutter/material.dart';
 import 'profile_data.dart';
 
