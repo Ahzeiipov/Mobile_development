@@ -3,7 +3,6 @@ import 'quiz_app.dart';
 import 'model/quiz.dart';
 
 void main() {
-
   Question q1 = const Question(
       title: "Who is the best teacher?",
       possibleAnswers: ["ronan", "hongly", 'leangsiv'],
