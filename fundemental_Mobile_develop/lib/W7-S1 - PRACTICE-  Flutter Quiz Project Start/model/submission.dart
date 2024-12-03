@@ -5,7 +5,7 @@ class Submission {
   final Map<Question, Answer> answers = {};
 
   void addAnswer(Question question, String answer) {
-    answers[question] == Answer(answer);
+    answers[question] = Answer(answer);
   }
 
   void removeAnswer() {

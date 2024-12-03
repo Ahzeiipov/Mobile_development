@@ -21,18 +21,18 @@ class _QuizAppState extends State<QuizApp> {
   QuizState quizState = QuizState.notStarted;
   int currentQuestion = 0;
   Submission submission = Submission();
-  void startQuiz() {
-    setState(() {
-      quizState = QuizState.started;
-    });
-  }
   // void startQuiz() {
   //   setState(() {
   //     quizState = QuizState.started;
-  //     currentQuestion = 0; // Reset question index to the first question
-  //     submission = Submission(); // Reset the submission (clear answers)
   //   });
   // }
+  void startQuiz() {
+    setState(() {
+      quizState = QuizState.started;
+      currentQuestion = 0; // Reset question index to the first question
+      submission = Submission(); // Reset the submission (clear answers)
+    });
+  }
 
   void finishQuiz() {
     setState(() {
@@ -44,8 +44,8 @@ class _QuizAppState extends State<QuizApp> {
     currentQuestion++;
     setState(() {
       if (currentQuestion >= widget.quiz.questions.length) {
-        quizState = QuizState.finished;
-        // finishQuiz();
+        // quizState = QuizState.finished;
+        finishQuiz();
       }
     });
   }
@@ -87,7 +87,7 @@ class _QuizAppState extends State<QuizApp> {
         );
       case QuizState.finished:
         return ResultScreen(
-          onStart: restartQuiz,
+          onRestart: restartQuiz,
           quiz: widget.quiz,
           submission: submission,
         );
